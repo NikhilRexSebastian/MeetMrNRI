@@ -8,7 +8,7 @@ export const site = {
 export function getWhatsAppUrl(service) {
   const message = service
     ? `Hi Meet Mr NRI, I would like help with ${service.toLowerCase()}. Please share the details.`
-    : "Hi Meet Mr NRI, I live abroad and would like some help in India. Can we discuss?";
+    : "Hi Meet Mr NRI, I live abroad and would like some help in Kerala. Can we discuss?";
 
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }

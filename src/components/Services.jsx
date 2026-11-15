@@ -15,13 +15,27 @@ export default function Services() {
         <div>
           <p className="eyebrow">A LITTLE HELP GOES A LONG WAY</p>
           <h2>
-            Life in India, <em>taken care of.</em>
+            Life in Kerala, <em>taken care of.</em>
           </h2>
         </div>
         <p>
-          From planning your next visit to helping your parents with everyday
-          needs — start with what matters to you.
-        </p>
+           <h3>Meet Mr. Ex-NRI</h3>
+
+          <p>
+           Having spent more than 10 years living in the UK before returning to Kerala,
+           I understand what it means to build a life abroad while caring for home.
+           That experience inspired me to create a service that helps fellow NRIs
+          with the things that matter most.
+          </p>
+
+           <p>
+           From planning your next visit to helping your parents with everyday needs —
+            start with what matters to you.
+           </p>
+
+          <h3>Jiby Mathew</h3>
+          <p><strong>Founder</strong></p>
+          </p>
       </div>
       <div className="filters" role="group" aria-label="Filter services">
         {serviceCategories.map((category) => (

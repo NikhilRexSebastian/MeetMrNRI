@@ -2,7 +2,7 @@ const steps = [
   {
     title: "Tell us what you need",
     description:
-      "Send us a message on WhatsApp with your request and the location in India.",
+      "Send us a message on WhatsApp with your request and the location in Kerala. We’re based in Kottayam and mainly serve central Kerala, but we can arrange support across the state with advance notice.",
   },
   {
     title: "Discuss the details",

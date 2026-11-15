@@ -1,6 +1,6 @@
 # Meet Mr NRI — React + Vite
 
-A responsive website for NRI services in India, with service filters and WhatsApp contact links.
+A responsive website for NRI services in Kerala, with service filters and WhatsApp contact links.
 
 ## Open and run in VS Code
 

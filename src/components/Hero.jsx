@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="hero-copy">
         <div className="eyebrow">
           <span className="dot" aria-hidden="true" />
-          FOR INDIANS, WHEREVER LIFE TAKES YOU
+          FOR KERALITES, WHEREVER LIFE TAKES YOU
         </div>
         <h1>
           Miles away.
@@ -14,7 +14,7 @@ export default function Hero() {
           Still close <em>to home.</em>
         </h1>
         <p className="intro">
-          Your life is abroad. A part of your heart is in India. Meet Mr NRI
+          Your life is abroad. A part of your heart is in Kerala. Meet Mr NRI
           helps you take care of the people, places and everyday things that
           matter back home.
         </p>
@@ -24,13 +24,13 @@ export default function Hero() {
             Explore our services ↓
           </a>
         </div>
-        <p className="quiet">One conversation. A helping hand in India.</p>
+        <p className="quiet">One conversation. A helping hand in Kerala.</p>
       </div>
 
       <div
         className="hero-art"
         role="img"
-        aria-label="Illustration of a home in India. Home is more than a place. Let’s help you look after it."
+        aria-label="Illustration of a home in Kerala. Home is more than a place. Let’s help you look after it."
       >
         <div className="sun" />
         <div className="arch">

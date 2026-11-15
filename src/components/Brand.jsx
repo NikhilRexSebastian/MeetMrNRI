@@ -5,7 +5,7 @@ export default function Brand() {
         m.
       </span>
       <span>
-        meet mr <b>NRI</b>
+        meet Mr. <b>NRI</b>
       </span>
     </a>
   );
