@@ -18,7 +18,7 @@ export const services = [
     id: "03",
     title: "Airport pickup & drop-off",
     description:
-      "Arrange your journey between the airport and home, with pickup and drop-off support.",
+      "**Enjoy reliable airport pickup and drop-off between the airport and home, at competitive prices.**",
     category: "Travel",
   },
   {
@@ -32,7 +32,7 @@ export const services = [
     id: "05",
     title: "Courier assistance",
     description:
-      "Need something sent from India? Discuss collection, packing and delivery arrangements.",
+      "Need something sent from Kerala? Discuss collection, packing and delivery arrangements.",
     category: "Everyday",
   },
   {
@@ -46,9 +46,23 @@ export const services = [
     id: "07",
     title: "Support for elderly parents",
     description:
-      "Discuss practical day-to-day assistance, visits and coordination for your parents in India.",
+      "Discuss practical day-to-day assistance, visits and coordination for your parents in Kerala.",
     category: "Family",
   },
+  {
+  id: "08",
+  title: "Car rental in Kerala",
+  description:
+    "Get help arranging a rental car for your visit to Kerala. Discuss your location, dates and travel needs.",
+  category: "Travel",
+},
+{
+  id: "09",
+  title: "Urgent assistance",
+  description:
+    "Need urgent support in Kerala? Contact us for help coordinating local assistance, arranging transport, reaching family members, or booking hospital appointments.",
+  category: "Family",
+},
 ];
 
 export const serviceCategories = [
