@@ -370,21 +370,358 @@ export default function JourneyHome() {
         ctx.globalAlpha = 1;
       }
     }
+    function person(x, y, t, shirt = "#b96449", scale = 1) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.scale(scale, scale);
+      ellipse(0, -48, 9, 10, "#bd946f");
+      round(-10, -36, 20, 28, 5, shirt);
+      line(-5, -9, -8, 13, "#49674f", 6);
+      line(5, -9, 8, 13, "#49674f", 6);
+      line(-8, -30, -18, -13, "#bd946f", 5);
+      line(8, -30, 18, -18 + Math.sin(t * 2) * 3, "#bd946f", 5);
+      ctx.restore();
+    }
+    function maintenance(t) {
+      sky(t);
+      ellipse(250, 328, 320, 130, "#c5d0b2");
+      rect(0, 310, 534, 150, "#c4cfaf");
+      palm(77, 310, 0.95);
+      palm(457, 315, 1.15);
+      home(275, 310, 1.04);
+      poly(
+        [
+          [250, 310],
+          [298, 310],
+          [340, 385],
+          [202, 385],
+        ],
+        "#e5d2a9",
+      );
+      // A ladder and a worker painting the outside wall.
+      line(346, 312, 323, 213, "#96774f", 5);
+      line(368, 312, 345, 213, "#96774f", 5);
+      for (let i = 0; i < 7; i++) {
+        let y = 223 + i * 13;
+        line(
+          326 + (y - 223) * 0.23,
+          y,
+          348 + (y - 223) * 0.23,
+          y,
+          "#b29361",
+          3,
+        );
+      }
+      person(343, 257, t, "#547b6a", 0.75);
+      const rollerY = 220 + Math.sin(t * 1.9) * 13;
+      line(333, 235, 314, rollerY, "#a48059", 3);
+      round(298, rollerY - 5, 20, 10, 2, "#f8efd8");
+      rect(291, 208, 14, 49, "#f8efd8");
+      round(376, 305, 22, 24, 3, "#cda45f");
+      round(373, 302, 28, 5, 2, "#e2c390");
+      // Gardener tending the plants beside the house.
+      person(168, 321, t, "#bd714e", 0.8);
+      for (let i = 0; i < 5; i++) {
+        let x = 112 + i * 15;
+        line(x, 330, x + Math.sin(t + i) * 2, 307 - (i % 2) * 8, "#4e7950", 3);
+        ellipse(x - 4, 315, 6, 3, "#628c56");
+        ellipse(x + 4, 310, 6, 3, "#6b945e");
+      }
+      round(147, 303, 14, 10, 3, "#d2ae69");
+    }
+    function hospital(t) {
+      sky(t);
+      ellipse(280, 329, 360, 128, "#c5d0b2");
+      rect(0, 317, 534, 143, "#c7d2b6");
+      rect(116, 179, 294, 142, "#f3eddb");
+      round(105, 165, 316, 20, 4, "#729383");
+      rect(236, 228, 58, 93, "#c4d4bf");
+      rect(240, 233, 23, 80, "#769c8a");
+      rect(268, 233, 22, 80, "#769c8a");
+      for (const x of [133, 172, 323, 362]) round(x, 222, 25, 35, 2, "#82a28f");
+      round(226, 184, 80, 29, 3, "#fff9e9");
+      ctx.fillStyle = "#416f58";
+      ctx.font = "12px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("HOSPITAL", 266, 204);
+      ctx.textAlign = "left";
+      rect(257, 138, 18, 43, "#54856c");
+      rect(245, 150, 42, 18, "#54856c");
+      poly(
+        [
+          [237, 321],
+          [293, 321],
+          [339, 378],
+          [191, 378],
+        ],
+        "#e5d5b5",
+      );
+      palm(73, 325, 0.8);
+      palm(453, 328, 0.85);
+      let walking = smooth(clamp((t - 46) / 5));
+      person(lerp(129, 204, walking), 332, t, "#bc7855", 0.83);
+      person(lerp(155, 229, walking), 334, t, "#d4b67c", 0.7);
+      person(302, 331, t, "#fff9e9", 0.85);
+      rect(310, 297, 18, 23, "#a3b797");
+      rect(313, 301, 12, 15, "#f7f3e5");
+      // Appointment calendar, drawn beside the entrance.
+      round(348, 274, 51, 46, 4, "#fff9e9");
+      round(348, 274, 51, 12, 3, "#b96a51");
+      for (let row = 0; row < 2; row++)
+        for (let col = 0; col < 3; col++)
+          rect(356 + col * 12, 293 + row * 10, 5, 4, "#a6b49c");
+      line(373, 300, 377, 304, "#426c51", 2);
+      line(377, 304, 385, 293, "#426c51", 2);
+    }
+    function beach(t) {
+      sky(t);
+      rect(0, 211, 534, 117, "#8eb9ac");
+      rect(0, 266, 534, 80, "#afd0ba");
+      poly(
+        [
+          [0, 304],
+          [110, 314],
+          [236, 302],
+          [370, 315],
+          [534, 298],
+          [534, 460],
+          [0, 460],
+        ],
+        "#ecd8ad",
+      );
+      for (let row = 0; row < 4; row++) {
+        ctx.beginPath();
+        ctx.strokeStyle = row % 2 ? "#d9e8d0" : "#c7dfc8";
+        ctx.lineWidth = 3;
+        for (let x = 0; x <= 534; x += 8) {
+          let y = 229 + row * 23 + Math.sin(x / 38 - t * 0.8 + row) * 4;
+          x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+        }
+        ctx.stroke();
+      }
+      palm(69, 340, 1.35);
+      palm(464, 345, 1.1);
+      const bx = 190 + Math.sin(t * 0.25) * 24;
+      poly(
+        [
+          [bx, 254],
+          [bx + 75, 254],
+          [bx + 62, 266],
+          [bx + 13, 266],
+        ],
+        "#8d6b48",
+      );
+      round(bx + 16, 237, 44, 19, 9, "#c8b27d");
+      for (let i = 0; i < 4; i++) rect(bx + 23 + i * 8, 244, 5, 8, "#648477");
+      line(354, 294, 354, 355, "#9a8056", 4);
+      poly(
+        [
+          [304, 296],
+          [354, 253],
+          [404, 296],
+        ],
+        "#c06d50",
+      );
+      poly(
+        [
+          [354, 253],
+          [354, 296],
+          [379, 296],
+        ],
+        "#e6b864",
+      );
+      line(304, 348, 342, 348, "#94794e", 5);
+      line(307, 350, 302, 362, "#94794e", 3);
+      line(338, 350, 342, 361, "#94794e", 3);
+      person(245, 352, t, "#537f70", 0.72);
+      person(273, 350, t, "#be7b54", 0.66);
+    }
+    function houseboat(t) {
+      sky(t);
+      ellipse(250, 240, 360, 58, "#c0ceb0");
+      for (let i = 0; i < 7; i++) palm(i * 89 + 12, 245, 0.52 + (i % 2) * 0.12);
+      rect(0, 250, 534, 210, "#9cbfaf");
+      for (let r = 0; r < 5; r++) {
+        ctx.beginPath();
+        ctx.strokeStyle = r % 2 ? "#bbd2bb" : "#c8dcc5";
+        ctx.lineWidth = 2;
+        for (let x = 0; x <= 534; x += 10) {
+          let y = 280 + r * 26 + Math.sin(x / 36 + t * 0.8 + r) * 3;
+          x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+        }
+        ctx.stroke();
+      }
+      const bx = 125 + Math.sin(((t - 62) / 8) * Math.PI) * 27,
+        by = 300 + Math.sin(t) * 2;
+      ctx.save();
+      ctx.translate(bx, by);
+      ellipse(120, 22, 137, 8, "#739b8790");
+      poly(
+        [
+          [-17, 0],
+          [256, 0],
+          [233, 23],
+          [11, 23],
+        ],
+        "#816647",
+      );
+      round(12, -62, 211, 65, 24, "#c5ad77");
+      round(24, -54, 185, 52, 17, "#d3be89");
+      for (let i = 0; i < 19; i++)
+        line(30 + i * 9, -48, 30 + i * 9, -3, "#b89c64", 1);
+      for (let i = 0; i < 4; i++) {
+        round(43 + i * 37, -35, 26, 25, 3, "#5e8370");
+        rect(54 + i * 37, -35, 3, 25, "#cbb47d");
+      }
+      rect(178, -34, 20, 37, "#98794f");
+      line(-1, -1, 235, -1, "#e2cf9c", 4);
+      line(231, -19, 249, 13, "#8a7049", 3);
+      ctx.restore();
+    }
+    function courier(t) {
+      sky(t);
+      ellipse(265, 322, 360, 125, "#c5d0b2");
+      rect(0, 311, 534, 149, "#c7d1b4");
+      home(377, 303, 0.78);
+      palm(470, 313, 0.85);
+      palm(76, 315, 0.8);
+      rect(0, 332, 534, 44, "#a1ad94");
+      for (let i = 0; i < 12; i++) rect(i * 49, 352, 25, 3, "#f1eddb");
+      let p = smooth(clamp((t - 70) / 3));
+      const vx = lerp(-145, 119, p);
+      ctx.save();
+      ctx.translate(vx, 303);
+      round(0, -49, 92, 69, 6, "#ead6ac");
+      round(90, -27, 48, 47, 7, "#bc704e");
+      poly(
+        [
+          [96, -22],
+          [117, -22],
+          [129, -4],
+          [96, -4],
+        ],
+        "#608571",
+      );
+      for (const x of [25, 111]) {
+        ellipse(x, 21, 12, 12, "#365541");
+        ellipse(x, 21, 5, 5, "#b8c5ab");
+      }
+      ctx.fillStyle = "#426b54";
+      ctx.font = "12px Arial";
+      ctx.fillText("COURIER", 13, -15);
+      rect(136, 2, 4, 8, "#f8e6b4");
+      ctx.restore();
+      if (t > 73) {
+        const progress = smooth((t - 73) / 3.5);
+        const px = lerp(255, 320, progress);
+        person(px, 322, t, "#bc704e", 0.85);
+        round(px + 10, 289, 22, 21, 2, "#d9b779");
+        rect(px + 19, 289, 4, 21, "#ebd2a1");
+        line(px + 14, 300, px + 28, 300, "#a78a59", 1);
+      }
+      person(355, 321, t, "#618772", 0.8);
+    }
+    function paddy(t) {
+      sky(t);
+      ellipse(155, 270, 264, 106, "#b9ca9e");
+      ellipse(422, 282, 225, 127, "#cad6b4");
+      rect(0, 282, 534, 178, "#b9cb8c");
+      const rows = [
+        [
+          [0, 292],
+          [173, 278],
+          [534, 294],
+          [534, 318],
+          [185, 301],
+          [0, 314],
+        ],
+        [
+          [0, 328],
+          [180, 315],
+          [534, 334],
+          [534, 359],
+          [180, 338],
+          [0, 351],
+        ],
+        [
+          [0, 367],
+          [185, 350],
+          [534, 376],
+          [534, 403],
+          [185, 375],
+          [0, 392],
+        ],
+      ];
+      rows.forEach((points, i) => {
+        poly(points, i % 2 ? "#9ab978" : "#a8c183");
+        ctx.beginPath();
+        ctx.strokeStyle = "#e5dfad";
+        ctx.lineWidth = 5;
+        points
+          .slice(0, 3)
+          .forEach(([x, y], j) => (j ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
+        ctx.stroke();
+      });
+      for (let r = 0; r < 3; r++)
+        for (let i = 0; i < 21; i++) {
+          let x = i * 27 + (r % 2) * 8,
+            y = 305 + r * 38;
+          let sway = Math.sin(t * 1.5 + i * 0.4) * 3;
+          line(x, y, x + sway, y - 10, "#70944f", 2);
+          line(x, y - 2, x - 4 + sway, y - 7, "#809e52", 1);
+        }
+      home(399, 281, 0.46);
+      palm(453, 291, 0.9);
+      palm(334, 284, 0.65);
+      palm(78, 281, 0.76);
+      person(214, 331, t, "#bf8456", 0.6);
+      ellipse(214, 300, 12, 4, "#d4b47d");
+      round(232, 322, 17, 13, 4, "#b69a62");
+    }
+    function renderScene(t) {
+      if (t < 14) airport(t);
+      else if (t < 38) journey(t);
+      else if (t < 46) maintenance(t);
+      else if (t < 54) hospital(t);
+      else if (t < 62) beach(t);
+      else if (t < 70) houseboat(t);
+      else if (t < 78) courier(t);
+      else paddy(t);
+    }
     function draw() {
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       ctx.clearRect(0, 0, 534, 460);
-      if (time < 14) airport(time);
-      else if (time < 15.5) {
-        const p = smooth((time - 14) / 1.5);
-        airport(14);
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(0, 0, 534 * p, 460);
-        ctx.clip();
-        journey(time);
-        ctx.restore();
-      } else journey(time);
-      let phase = time < 14 ? 0 : time < 24 ? 1 : time < 34 ? 2 : 3;
+      renderScene(time);
+      // A gentle cream dissolve marks each new chapter.
+      const boundaries = [14, 38, 46, 54, 62, 70, 78];
+      for (const b of boundaries) {
+        const d = Math.abs(time - b);
+        if (d < 0.55) {
+          ctx.globalAlpha = (1 - d / 0.55) * 0.8;
+          rect(0, 0, 534, 460, "#f8f6ee");
+          ctx.globalAlpha = 1;
+        }
+      }
+      let phase =
+        time < 14
+          ? 0
+          : time < 24
+            ? 1
+            : time < 34
+              ? 2
+              : time < 38
+                ? 3
+                : time < 46
+                  ? 4
+                  : time < 54
+                    ? 5
+                    : time < 62
+                      ? 6
+                      : time < 70
+                        ? 7
+                        : time < 78
+                          ? 8
+                          : 9;
       if (phase !== scene) {
         scene = phase;
         const copy = [
@@ -398,15 +735,41 @@ export default function JourneyHome() {
             "A little closer to the people you love.",
           ],
           ["Home, in the heart of Kerala.", "Let’s help you look after it."],
+          [
+            "Your home, looked after.",
+            "Help coordinating maintenance and upkeep.",
+          ],
+          [
+            "A little help for your loved ones.",
+            "Hospital appointments and local coordination.",
+          ],
+          [
+            "Enjoy your holidays in India.",
+            "Beach days, new places and time together.",
+          ],
+          [
+            "Slow down on a houseboat holiday.",
+            "Discover Kerala’s beautiful backwaters.",
+          ],
+          [
+            "International courier assistance.",
+            "Help coordinating collection and delivery overseas.",
+          ],
+          [
+            "Back to your roots.",
+            "Paddy fields, coconut palms and a place called home.",
+          ],
         ][phase];
         heading.textContent = copy[0];
         subtitle.textContent = copy[1];
       }
       seek.value = time;
-      clock.textContent = `0:${String(Math.floor(time)).padStart(2, "0")} / 0:40`;
+      const seconds = Math.floor(time);
+      clock.textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")} / 1:26`;
       play.textContent = playing ? "Pause" : "Play";
       play.setAttribute("aria-pressed", String(!playing));
     }
+
     function resize() {
       const dpr = Math.min(devicePixelRatio || 1, 2);
       canvas.width = Math.round(canvas.clientWidth * dpr);
@@ -416,7 +779,7 @@ export default function JourneyHome() {
     }
     function tick(now) {
       if (previous && playing)
-        time = (time + Math.min((now - previous) / 1000, 0.1)) % 40;
+        time = (time + Math.min((now - previous) / 1000, 0.1)) % 86;
       previous = now;
       draw();
       frameId = requestAnimationFrame(tick);
@@ -483,7 +846,7 @@ export default function JourneyHome() {
           </div>
         </div>
       </div>
-      <div className="journey-controls" hidden>
+      <div className="journey-controls">
         <button type="button" data-action="play">
           Pause
         </button>
@@ -493,12 +856,12 @@ export default function JourneyHome() {
         <input
           type="range"
           min="0"
-          max="40"
+          max="86"
           step="0.1"
           defaultValue="0"
           aria-label="Preview position in seconds"
         />
-        <span className="journey-time">0:00 / 0:40</span>
+        <span className="journey-time">0:00 / 1:26</span>
       </div>
     </div>
   );

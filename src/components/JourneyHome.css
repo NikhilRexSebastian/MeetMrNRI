@@ -112,6 +112,8 @@
 #nri-journey-preview {
   min-width: 0;
 }
-#nri-journey-preview .journey-controls[hidden] {
+
+/* Playback elements remain available to the animation logic but are hidden. */
+#nri-journey-preview .journey-controls {
   display: none;
 }
